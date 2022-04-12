@@ -4,4 +4,5 @@ class ThemeModel {
   ColorSwatch? theme;
 
   ThemeModel({this.theme});
+
 }

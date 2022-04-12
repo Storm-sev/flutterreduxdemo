@@ -1,8 +1,8 @@
 import '../models/profile.dart';
 
 class ProfileModel {
-  Profile? profile;
-  ProfileModel({this.profile});
+  Profile profile;
+  ProfileModel({required this.profile});
 }
 
 

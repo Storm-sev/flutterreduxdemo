@@ -4,7 +4,10 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutterreduxdemo/App_State.dart';
 import 'package:flutterreduxdemo/comment/Global.dart';
 import 'package:flutterreduxdemo/model/Theme_Model.dart';
+import 'package:flutterreduxdemo/router/MyDrawer.dart';
 import 'package:redux/redux.dart';
+
+import 'models/repo.dart';
 
 void main() => Global.init().then((value) => runApp(MyApp()));
 
@@ -36,9 +39,16 @@ class HomeRouter extends StatefulWidget {
 }
 
 class _HomeRouterState extends State<HomeRouter> {
+  static const String loading=  "##-loading-##";
+  var items = <Repo>[Repo()..name = loading];
+  bool hasMore = true;
+  int page =1;
+  Widget line = const Divider(color: Colors.black,);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer:MyDrawer(),
       appBar: AppBar(
         title: const Text('title 首页'),
       ),
@@ -60,14 +70,10 @@ class _HomeRouterState extends State<HomeRouter> {
 
 class _ViewModel {
    int? index;
-
   _ViewModel({this.index});
-
   factory _ViewModel.create(Store<AppState> store) {
     return _ViewModel(index: store.state.themeState.themeIndex);
   }
-
-
 }
 
 

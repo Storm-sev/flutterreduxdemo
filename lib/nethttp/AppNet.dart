@@ -1,6 +1,4 @@
-
 import 'package:dio/adapter.dart';
-import 'package:dio/adapter_browser.dart';
 
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
@@ -60,12 +58,15 @@ class AppNet extends DioMixin implements Dio {
     }
 
 
-    if(kIsWeb) {
-      httpClientAdapter = BrowserHttpClientAdapter();
-    }else{
-      httpClientAdapter = DefaultHttpClientAdapter();
+    // if(kIsWeb) {
+    //   httpClientAdapter = BrowserHttpClientAdapter();
+    // }else{
+    //   httpClientAdapter = DefaultHttpClientAdapter();
+    //
+    // }
 
-    }
+    httpClientAdapter = DefaultHttpClientAdapter();
+
 
     // if (config?.proxy?.isNotEmpty ?? false) {
     //   setProxy(config!.proxy!);

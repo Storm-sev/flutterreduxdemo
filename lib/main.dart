@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutterreduxdemo/App_State.dart';
 import 'package:flutterreduxdemo/comment/Global.dart';
-import 'package:flutterreduxdemo/model/Theme_Model.dart';
 import 'package:flutterreduxdemo/router/MyDrawer.dart';
+import 'package:flutterreduxdemo/router/Theme_router.dart';
 import 'package:redux/redux.dart';
 
 import 'models/repo.dart';
@@ -26,6 +25,9 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
                 primarySwatch: store.state.themeState.theme as MaterialColor),
             home: const HomeRouter(),
+            routes: {
+              "theme": (context) => ThemeChangeRouter(),
+            },
           );
         }));
   }

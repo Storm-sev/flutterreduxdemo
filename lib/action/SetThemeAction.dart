@@ -8,7 +8,11 @@ class SetThemeAction {
   SetThemeAction({required this.theme}) : super();
 
   static ThemeModel setTheme(ThemeModel model, SetThemeAction action) {
-    model.theme = action.theme;
+    if(model.theme != action.theme) {
+      model.theme = action.theme;
+      model.saveTheme();
+    }
+
     return model;
   }
 }

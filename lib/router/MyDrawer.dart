@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutterreduxdemo/App_State.dart';
 import 'package:flutterreduxdemo/comment/Theme_color.dart';
 import 'package:flutterreduxdemo/models/index.dart';
+import 'package:list_tile_more_customizable/list_tile_more_customizable.dart';
 import 'package:redux/redux.dart';
 
 import '../comment/CommentWidget.dart';
@@ -15,6 +16,29 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
+  Widget _buildMenus() {
+    return ListView(
+      children: [
+        ListTileMoreCustomizable(
+          dense: true,
+          leading: const Icon(
+            Icons.color_lens,
+          ),
+          title: const Text(
+            "S.of(context).title_lens",
+            style: const TextStyle(color: Colors.grey),
+          ),
+          onTap: (v) {
+            // 跳转 换肤
+            Navigator.of(context).pushNamed("theme");
+          },
+        ),
+
+      ],
+    );
+  }
+
+  // 头部信息
   Widget _buildHeaders(_ViewModel vm) {
     return GestureDetector(
       child: Container(
@@ -54,7 +78,10 @@ class _MyDrawerState extends State<MyDrawer> {
           return Drawer(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [_buildHeaders(vm), Text("null")],
+              children: [
+                _buildHeaders(vm),
+                Expanded(child: _buildMenus()),
+              ],
             ),
           );
         },
@@ -68,7 +95,7 @@ class _ViewModel {
   bool get isLogin => user != null;
   late int themeIndex = 0;
 
-  _ViewModel({this.user,required  this.themeIndex});
+  _ViewModel({this.user, required this.themeIndex});
 
   factory _ViewModel.create(Store<AppState> store) {
     return _ViewModel(

@@ -22,7 +22,8 @@ class AppState {
     ColorSwatch theme = Global.themes.firstWhere(
         (element) => profileState.profile.theme == element.value,
         orElse: () => Colors.blue);
-    themeState = ThemeModel(theme: theme);
+    themeState = ThemeModel(theme: theme,profileModel: profileState);
+
     //初始化用户信息.
     userState =
         UserModel(user: profileState.profile.user, profileModel: profileState);

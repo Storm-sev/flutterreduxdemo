@@ -1,6 +1,4 @@
 // http 配置
-
-
 import 'package:dio/dio.dart';
 
 class HttpConfig {

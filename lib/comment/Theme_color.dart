@@ -30,7 +30,7 @@ final List<CustomTheme> custThemes = <CustomTheme>[
 ];
 
 final CustomTheme lightTheme = CustomTheme(
-  titleColor: Colors.black,
+  titleColor: Colors.white,
   buttonBgColor: Colors.blue,
   buttonTextColor: Colors.white,
   listTitleColor: Colors.black87,

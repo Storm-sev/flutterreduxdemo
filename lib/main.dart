@@ -65,7 +65,6 @@ class _HomeRouterState extends State<HomeRouter> {
     );
   }
 
-
 }
 
 class _ViewModel {
